@@ -1,4 +1,5 @@
 import React, {VFC} from 'react'
+import styles from './input.module.css'
 
 type Props = {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -7,10 +8,12 @@ type Props = {
     id?: string
     placeholder?: string
     className?: string
+    max?: number
+    min?: number
 }
 
 const Input: VFC<Props> = (props: Props) => {
-    const {value, onChange, id, type = 'text', placeholder = '', className} = props
+    const {value, onChange, id, type = 'text', placeholder = '', className, min, max} = props
 
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
@@ -19,11 +22,13 @@ const Input: VFC<Props> = (props: Props) => {
 
     return (
         <input
-            className={[className, "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"].join(' ')}
+            className={[className, styles.input].join(' ')}
             id={id}
             type={type}
             value={value}
             placeholder={placeholder}
+            min={min}
+            max={max}
             onChange={handleChange}
         />
     )

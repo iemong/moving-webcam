@@ -51,12 +51,12 @@ const Home = (): JSX.Element => {
     }, [value, servo])
 
     return (
-        <main className="h-full">
-            <h1 className="text-center">Moving WebCam</h1>
-            <p className="text-center">Servo Degree: {value}</p>
-            <div className="flex justify-between max-w-md mx-auto">
+        <main className="h-full flex items-center justify-center flex-col">
+            <h1 className="text-center text-2xl font-bold mb-5">Moving WebCam</h1>
+            <p className="text-center text-xl mb-5">Servo Degree: {value}</p>
+            <div className="flex justify-between items-center w-full max-w-md mx-auto">
                 <Button onClick={handleClickLeft}>◀︎</Button>
-                <Input type="number" value={String(value)} onChange={handleChangeInput} className="mx-2" />
+                <Input type="range" min={0} max={180} value={String(value)} onChange={handleChangeInput} className="mx-2" />
                 <Button onClick={handleClickRight}>▶︎</Button>
             </div>
         </main>
